@@ -330,6 +330,7 @@ def switch_backend_to_pytorch(ortmodule, pytorch_module):
     ortmodule._load_state_dict_pre_hooks = pytorch_module._load_state_dict_pre_hooks
     ortmodule._modules = pytorch_module._modules
     ortmodule.forward = pytorch_module.forward
+    torch.cuda.empty_cache()
 
 
 def warn_of_constant_inputs(data):
